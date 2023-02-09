@@ -7,22 +7,39 @@ import Col from 'react-bootstrap/Col';
 import '../css/cpedido.css';
 import '../css/index.css';
 import React,{Component} from 'react';
+import axios from "axios";
+
+const api = axios.create({
+	baseURL: "https://youhungryoic-axxafsuovdwu-px.integration.us-phoenix-1.ocp.oraclecloud.com/ic/api/integration/v1/flows/rest/PEDIDOS_API/1.0",
+});
+
+const token = "aGFja2FjbG91ZHNpbnFpYXRpbWUwNUBnbWFpbC5jb206SGFja2FjbG91ZHNpbnFpYTA1Kg=="
+
+const options = {
+	headers: {
+		 "Access-Control-Allow-Origin": "*",
+		 'Authorization': `Basic ${token}`
+	}
+}
 
 export default class Restaurant extends Component {
     
     constructor(props){
         super(props);
             this.state ={
-                pedido: [{nomePedido:'Bife acebolado',descricaoPedido:'Belo bife acebolado!! Belo bife acebolado!! Belo bife acebolado!! Belo bife acebolado!! Belo bife acebolado!!',nomeRestaurante:'Restaurante 1',tempoMedioPreparo:'33min',preco:'R$: 35,00',img:'https://objectstorage.sa-saopaulo-1.oraclecloud.com/p/Ceqy-Ye8N3S-QGyR5flge0w8r62TBYVFwpkDTpsgi4S15AlWiBuSRb3ZCqQqmHN1/n/oraclemetodista/b/bucket-teste/o/bife-acebolado1.jpg'},
-                {nomePedido:'Bife acebolado',descricaoPedido:'Belo bife acebolado!! Belo bife acebolado!! Belo bife acebolado!! Belo bife acebolado!! Belo bife acebolado!!',nomeRestaurante:'Restaurante 2',tempoMedioPreparo:'33min',preco:'R$: 40,00',img:'https://objectstorage.sa-saopaulo-1.oraclecloud.com/p/du6byfRVaVdKyLlbCZMJmEXqNSKIAkZPlhmKPLVaf_uh4gen_n-lDDx1C8cXnnXW/n/oraclemetodista/b/bucket-teste/o/bife-acebolado2.jpg'},
-                {nomePedido:'Bife acebolado',descricaoPedido:'Belo bife acebolado!! Belo bife acebolado!! Belo bife acebolado!! Belo bife acebolado!! Belo bife acebolado!!',nomeRestaurante:'Restaurante 3',tempoMedioPreparo:'33min',preco:'R$: 80,00',img:'https://objectstorage.sa-saopaulo-1.oraclecloud.com/p/yT0Fsm8BsJllaXoUUD-qVlwxOq9OrqvCCU0p0eWZ90zaSM3YIB-5L3cSIimwKy2Q/n/oraclemetodista/b/bucket-teste/o/bife-acebolado3.jpg'}]
+                pedido: [{NOMEPEDIDO:'Bife acebolado',DESCRICAOPEDIDO:'Belo bife acebolado!! Belo bife acebolado!! Belo bife acebolado!! Belo bife acebolado!! Belo bife acebolado!!',NOMERESTAURANTE:'Restaurante 1',TEMPOMEDIOPREPARO:'33min',PRECO:'R$: 35,00',IMG:'https://objectstorage.sa-saopaulo-1.oraclecloud.com/p/Ceqy-Ye8N3S-QGyR5flge0w8r62TBYVFwpkDTpsgi4S15AlWiBuSRb3ZCqQqmHN1/n/oraclemetodista/b/bucket-teste/o/bife-acebolado1.jpg'},
+                {NOMEPEDIDO:'Bife acebolado',DESCRICAOPEDIDO:'Belo bife acebolado!! Belo bife acebolado!! Belo bife acebolado!! Belo bife acebolado!! Belo bife acebolado!!',NOMERESTAURANTE:'Restaurante 2',TEMPOMEDIOPREPARO:'33min',PRECO:'R$: 40,00',IMG:'https://objectstorage.sa-saopaulo-1.oraclecloud.com/p/du6byfRVaVdKyLlbCZMJmEXqNSKIAkZPlhmKPLVaf_uh4gen_n-lDDx1C8cXnnXW/n/oraclemetodista/b/bucket-teste/o/bife-acebolado2.jpg'},
+                {NOMEPEDIDO:'Bife acebolado',DESCRICAOPEDIDO:'Belo bife acebolado!! Belo bife acebolado!! Belo bife acebolado!! Belo bife acebolado!! Belo bife acebolado!!',NOMERESTAURANTE:'Restaurante 3',TEMPOMEDIOPREPARO:'33min',PRECO:'R$: 80,00',IMG:'https://objectstorage.sa-saopaulo-1.oraclecloud.com/p/yT0Fsm8BsJllaXoUUD-qVlwxOq9OrqvCCU0p0eWZ90zaSM3YIB-5L3cSIimwKy2Q/n/oraclemetodista/b/bucket-teste/o/bife-acebolado3.jpg'}]
             }
         }
 
         submitPedido(e){
             e.preventDefault();
                 alert(JSON.stringify(this.state.pedido[e.target.value]));
-        }
+                api.post('pedidos/', this.state.pedido[e.target.value], options).then(res => {
+						console.log(res.data)
+				  })
+		}
 
     render(){
   return (
@@ -37,26 +54,26 @@ export default class Restaurant extends Component {
                             
                                 <Col md={{ span: 3, offset: 0 }}>
                     <Card style={{ width: '30rem' }}>
-                        <Card.Img variant="top" src={pedido.img} />
+                        <Card.Img variant="top" src={pedido.IMG} />
                         <Card.Body>
-                            <Card.Title className="tile-card">{pedido.nomePedido}</Card.Title>
+                            <Card.Title className="tile-card">{pedido.NOMEPEDIDO}</Card.Title>
                             <Card.Text className="card-text">
-                            {pedido.descricaoPedido}
+                            {pedido.DESCRICAOPEDIDO}
                             </Card.Text>
                             <Row className="details-card-restaurant">
                                 <Col md={{ span: 6, offset: 0 }}>
                                     <Card.Text as={Col}className="card-text details-card">
-                            <strong>{pedido.nomeRestaurante}</strong>
+                            <strong>{pedido.NOMERESTAURANTE}</strong>
                                     </Card.Text>
                                 </Col>
                                 <Col md={{ span: 6, offset: 0 }}>
                                     <Card.Text as={Col}className="card-text">
-                            <strong>{pedido.tempoMedioPreparo}</strong>
+                            <strong>{pedido.TEMPOMEDIOPREPARO}</strong>
                                     </Card.Text>
                                 </Col>
                             </Row>
                             <Card.Text as={Col}className="price">
-                                      {pedido.preco}
+                                      {pedido.PRECO}
                             </Card.Text>
                             <Button variant="danger" className="btn-danger-pedido" value={index} onClick={this.submitPedido.bind(this)}>Fazer Pedido</Button>
                         </Card.Body>
@@ -67,26 +84,26 @@ export default class Restaurant extends Component {
                             return(
                             <Col md={{ span: 3, offset: 1 }}>
                    <Card style={{ width: '30rem' }}>
-                        <Card.Img variant="top"  className="card-image" src={pedido.img} />
+                        <Card.Img variant="top"  className="card-image" src={pedido.IMG} />
                         <Card.Body>
-                            <Card.Title className="tile-card">{pedido.nomePedido}</Card.Title>
+                            <Card.Title className="tile-card">{pedido.NOMEPEDIDO}</Card.Title>
                             <Card.Text className="card-text">
-                            {pedido.descricaoPedido}
+                            {pedido.DESCRICAOPEDIDO}
                             </Card.Text>
                             <Row className="details-card-restaurant">
                                 <Col md={{ span: 6, offset: 0 }}>
                                     <Card.Text as={Col}className="card-text details-card">
-                            <strong>{pedido.nomeRestaurante}</strong>
+                            <strong>{pedido.NOMERESTAURANTE}</strong>
                                     </Card.Text>
                                 </Col>
                                 <Col md={{ span: 6, offset: 0 }}>
                                     <Card.Text as={Col}className="card-text">
-                            <strong>{pedido.tempoMedioPreparo}</strong>
+                            <strong>{pedido.TEMPOMEDIOPREPARO}</strong>
                                     </Card.Text>
                                 </Col>
                             </Row>
                             <Card.Text as={Col}className="price">
-                                      {pedido.preco}
+                                      {pedido.PRECO}
                             </Card.Text>
                             <Button variant="danger" className="btn-danger-pedido" value={index} onClick={this.submitPedido.bind(this)}>Fazer Pedido</Button>
                         </Card.Body>
