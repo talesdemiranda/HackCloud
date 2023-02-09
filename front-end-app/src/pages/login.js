@@ -9,13 +9,27 @@ import '../css/index.css';
 import '../css/login.css';
 import React, {Component} from 'react';
 import { Redirect } from 'react-router-dom';
+import axios from "axios";
+
+const api = axios.create({
+	baseURL: "https://youhungryoic-axxafsuovdwu-px.integration.us-phoenix-1.ocp.oraclecloud.com/ic/api/integration/v1/flows/rest/LOGIN_API/1.0",
+});
+
+const token = "aGFja2FjbG91ZHNpbnFpYXRpbWUwNUBnbWFpbC5jb206SGFja2FjbG91ZHNpbnFpYTA1Kg=="
+
+const options = {
+	headers: {
+		 "Access-Control-Allow-Origin": "*",
+		 'Authorization': `Basic ${token}`
+	}
+}
 
 export default class Login extends Component {
 
     constructor(props){
         super(props);
             this.state ={
-                email: '',
+                login: '',
                 password: '',
                 redirect: false
             }
@@ -30,14 +44,21 @@ export default class Login extends Component {
             })
         }
 
-        submitForm(){
-            if(this.state.password === '12345'){
-                this.setState(prevState => {
-                    let nextState = Object.assign({},prevState);
-                    nextState.redirect = true;
-                    return nextState;
-                })
-            }
+        submitForm(e){
+					e.preventDefault();
+					api.post('/login', this.state, options).then(res => {
+					console.log(res.data)
+
+					if(res.data['status'] !== ""){
+						this.setState(prevState => {
+							 let nextState = Object.assign({},prevState);
+							 nextState.redirect = true;
+							 return nextState;
+						})
+				  }
+
+				})
+
         }
     
 render(){
@@ -53,7 +74,7 @@ render(){
                         <Form onSubmit={this.submitForm.bind(this)}>
                                 <Form.Group controlId="formBasicEmail">
                                     <Form.Label className="details-form" >Email</Form.Label>
-                                    <Form.Control type="email" className="font-forms" placeholder="Informe o email" value={this.state.email} onChange={this.changeField.bind(this,'email')}/>
+                                    <Form.Control type="email" className="font-forms" placeholder="Informe o email" value={this.state.email} onChange={this.changeField.bind(this,'login')}/>
                                         <Form.Text className="text-muted">
                                             Informe seu e-mail pessoal
                                         </Form.Text>
