@@ -49,7 +49,7 @@ render(){
                 <Container>
                     <Row>
                         <Col md={{ span: 4, offset: 4 }}>
-                        <Image className="image-details" src="https://objectstorage.sa-saopaulo-1.oraclecloud.com/p/GTS7vp0dHcafTrseQSbRohqhBsOpSQ0VW9hnsCkEPWC3K4S0LcmqLBJqtrnz9Xg1/n/oraclemetodista/b/bucket-teste/o/logoLogoComida.jpeg" rounded />
+                        <Image className="image-details" src="https://objectstorage.us-phoenix-1.oraclecloud.com/p/Duyj_SoPRpfnhWSyUJ-pgeznKxwA6nLsitPO9ypMzj7lF0XOjh6Zz1x7-kfZ5tLa/n/axxafsuovdwu/b/bucket-HackCloudImagens/o/Logo_HackCloud.png" rounded />
                         <Form onSubmit={this.submitForm.bind(this)}>
                                 <Form.Group controlId="formBasicEmail">
                                     <Form.Label className="details-form" >Email</Form.Label>

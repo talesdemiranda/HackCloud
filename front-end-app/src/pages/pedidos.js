@@ -27,9 +27,9 @@ export default class Restaurant extends Component {
     constructor(props){
         super(props);
             this.state ={
-                pedido: [{NOMEPEDIDO:'Bife acebolado',DESCRICAOPEDIDO:'Belo bife acebolado!! Belo bife acebolado!! Belo bife acebolado!! Belo bife acebolado!! Belo bife acebolado!!',NOMERESTAURANTE:'Restaurante 1',TEMPOMEDIOPREPARO:'33min',PRECO:'R$: 35,00',IMG:'https://objectstorage.sa-saopaulo-1.oraclecloud.com/p/Ceqy-Ye8N3S-QGyR5flge0w8r62TBYVFwpkDTpsgi4S15AlWiBuSRb3ZCqQqmHN1/n/oraclemetodista/b/bucket-teste/o/bife-acebolado1.jpg'},
-                {NOMEPEDIDO:'Bife acebolado',DESCRICAOPEDIDO:'Belo bife acebolado!! Belo bife acebolado!! Belo bife acebolado!! Belo bife acebolado!! Belo bife acebolado!!',NOMERESTAURANTE:'Restaurante 2',TEMPOMEDIOPREPARO:'33min',PRECO:'R$: 40,00',IMG:'https://objectstorage.sa-saopaulo-1.oraclecloud.com/p/du6byfRVaVdKyLlbCZMJmEXqNSKIAkZPlhmKPLVaf_uh4gen_n-lDDx1C8cXnnXW/n/oraclemetodista/b/bucket-teste/o/bife-acebolado2.jpg'},
-                {NOMEPEDIDO:'Bife acebolado',DESCRICAOPEDIDO:'Belo bife acebolado!! Belo bife acebolado!! Belo bife acebolado!! Belo bife acebolado!! Belo bife acebolado!!',NOMERESTAURANTE:'Restaurante 3',TEMPOMEDIOPREPARO:'33min',PRECO:'R$: 80,00',IMG:'https://objectstorage.sa-saopaulo-1.oraclecloud.com/p/yT0Fsm8BsJllaXoUUD-qVlwxOq9OrqvCCU0p0eWZ90zaSM3YIB-5L3cSIimwKy2Q/n/oraclemetodista/b/bucket-teste/o/bife-acebolado3.jpg'}]
+                pedido: [{NOMEPEDIDO:'Yaksoba',DESCRICAOPEDIDO:'Feito com noodles de trigo crocantes e cobertos com um molho de soja deliciosamente adocicado, nossos legumes frescos e cortados na hora, incluindo cenoura, repolho e cebola, são salteados até ficarem crocantes, combinando perfeitamente com o suculento frango grelhado ou camarões. Tudo isso é servido em uma tigela quente!!!',NOMERESTAURANTE:'Restaurante 1',TEMPOMEDIOPREPARO:'33min',PRECO:'R$: 35,00',IMG:'https://objectstorage.us-phoenix-1.oraclecloud.com/p/WoaCFXZZ1FnswvaEWeWlH1V8U4VzpMDheGrSKY9ESL-HjILOBSpO4q261Zyj-6l1/n/axxafsuovdwu/b/bucket-HackCloudImagens/o/DEKIDIN_YAKISO_HackCloud.png'},
+                {NOMEPEDIDO:'Filé ao molho Gorgonzola',DESCRICAOPEDIDO:'Um clássico digno de reis, é uma verdadeira obra-prima culinária. Cada pedaço de filé mignon é preparado com habilidade, resultando em uma carne macia e suculenta, coberta com um molho cremoso de gorgonzola. O sabor forte do queijo combina perfeitamente com a carne. Servido com batatas cozidas suavemente e verduras crocantes!!!',NOMERESTAURANTE:'Restaurante 2',TEMPOMEDIOPREPARO:'33min',PRECO:'R$: 40,00',IMG:'https://objectstorage.us-phoenix-1.oraclecloud.com/p/6raGiHX_7q6GYsbCvVMfTWQ5ihgPRkIQ1i0mvZxtvClpTpp3RODIbD9W6WBh5P91/n/axxafsuovdwu/b/bucket-HackCloudImagens/o/file_mignon_ao_molho_gorgonzola_HackCloud.jpg'},
+                {NOMEPEDIDO:'Paella',DESCRICAOPEDIDO:'Uma viagem culinária pelas praias da Espanha com nosso irresistível prato! Arroz sauté coberto com frutos do mar frescos e suculentos, incluindo camarões, lulas e mexilhões, além de vegetais crocantes, como pimentão vermelho e verde, e cebola dourada. Servido em uma grande tigela é perfeita para compartilhar com a familiares!!!',NOMERESTAURANTE:'Restaurante 3',TEMPOMEDIOPREPARO:'33min',PRECO:'R$: 80,00',IMG:'https://objectstorage.us-phoenix-1.oraclecloud.com/p/jnzVozbyrU9dvk72QMJLTUWOjDvhoNV-vGKMloVFxDrG3Dzz8_u5RmXKblwoHZ11/n/axxafsuovdwu/b/bucket-HackCloudImagens/o/Paella_HackCloud.png'}]
             }
         }
 
@@ -54,7 +54,7 @@ export default class Restaurant extends Component {
                             
                                 <Col md={{ span: 3, offset: 0 }}>
                     <Card style={{ width: '30rem' }}>
-                        <Card.Img variant="top" src={pedido.IMG} />
+                        <Card.Img variant="top" className="card-image" src={pedido.IMG} />
                         <Card.Body>
                             <Card.Title className="tile-card">{pedido.NOMEPEDIDO}</Card.Title>
                             <Card.Text className="card-text">
