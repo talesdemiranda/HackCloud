@@ -50,6 +50,9 @@ export default class Restaurant extends Component {
         e.preventDefault();
         api.post('/restaurantes', this.state, options).then(res => {
             console.log(res.data)
+				this.content = ''
+				document.getElementById("formulario").reset();
+				alert("Restaurante cadastrado com sucesso!");
         }).catch(error => {
 				console.log(error.message);
 			})
@@ -62,7 +65,7 @@ export default class Restaurant extends Component {
                 <Container>
                     <Row>
                         <Col md={{ span: 6, offset: 3 }}>
-                            <Form onSubmit={this.submitForm.bind(this)}>
+                            <Form id = "formulario" onSubmit={this.submitForm.bind(this)}>
                                 <Form.Row>
                                     <Form.Group as={Col} controlId="formGridNome">
                                         <Form.Label className="details-form">Nome</Form.Label>
@@ -85,7 +88,7 @@ export default class Restaurant extends Component {
                                     </Form.Group>
                                 </Form.Row>
                                 <Form.Group controlId="formGridendereco">
-                                    <Form.Label className="details-form">Enreceço</Form.Label>
+                                    <Form.Label className="details-form">EnreceÃ§o</Form.Label>
                                     <Form.Control className="font-forms" placeholder="Informe o endereço" value={this.state.endereco} onChange={this.changeField.bind(this, 'ENDERECO')} />
                                 </Form.Group>
 

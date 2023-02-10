@@ -48,7 +48,10 @@ export default class Food extends Component {
 
         submitForm(e){
                 e.preventDefault();
-                api.post('pratos/', this.state, options).then(res => {
+                api.post('/pratos', this.state, options).then(res => {
+					 document.getElementById("formulario").reset();
+					 alert("Prato cadastrado com sucesso!");
+		
                     console.log(res.data)
                 })
         }
@@ -60,7 +63,7 @@ export default class Food extends Component {
         <Container>
             <Row>
                 <Col md={{ span: 6, offset: 3 }}>
-                    <Form onSubmit={this.submitForm.bind(this)}>
+                    <Form id="formulario" onSubmit={this.submitForm.bind(this)}>
                             <Form.Group controlId="formGridNome">
                             <Form.Label className="details-form">Nome do Prato</Form.Label>
                             <Form.Control  className="font-forms" type="text" placeholder="Informe o email" value={this.state.nome} onChange={this.changeField.bind(this,'NOME')} />
@@ -73,9 +76,9 @@ export default class Food extends Component {
                         <Form.Row>
                         <Form.Group as={Col} controlId="formGridendereco">
                             <Form.Label className="details-form">Restaurante</Form.Label>
-                            <Form.Control  className="font-forms" type="text" placeholder="Informe o restaurante" value={this.state.restaurante} onChange={this.changeField.bind(this,'RESTAURANTE')} />
+                            <Form.Control  className="font-forms" type="number" placeholder="Informe o restaurante" value={this.state.restaurante} onChange={this.changeField.bind(this,'RESTAURANTE')} />
 
-                            {/* <Form.Control  as="select"  className="font-forms select-forms" placeholder="Informe o endereço" value={this.state.restaurante} onChange={this.changeField.bind(this,'restaurante')} >
+                            {/* <Form.Control  as="select"  className="font-forms select-forms" placeholder="Informe o endereÃ§o" value={this.state.restaurante} onChange={this.changeField.bind(this,'restaurante')} >
                                 <option>Restaurante 1</option>
                                 <option>Restaurante 2</option>
                             </Form.Control> */}
@@ -88,7 +91,7 @@ export default class Food extends Component {
                         <Form.Row>
                             <Form.Group as={Col} controlId="formGridtempoParaPreparo">
                             <Form.Label className="details-form">Tempo para preparo</Form.Label>
-                            <Form.Control  className="font-forms" placeholder="Informe o tempo medio para preparar o pedido" value={this.state.tempoParaPreparo} onChange={this.changeField.bind(this,'TEMPOPARAPREPARO')} />
+                            <Form.Control  className="font-forms" placeholder="Informe o tempo médio para preparar o pedido" value={this.state.tempoParaPreparo} onChange={this.changeField.bind(this,'TEMPOPARAPREPARO')} />
                             </Form.Group>
 
                             <Form.Group as={Col} controlId="formGridAcompanhamento">

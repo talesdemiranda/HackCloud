@@ -35,7 +35,7 @@ export default class Restaurant extends Component {
 
         submitPedido(e){
             e.preventDefault();
-                alert(JSON.stringify(this.state.pedido[e.target.value]));
+                alert("Pedido realizado com sucesso!!!");
                 api.post('pedidos/', this.state.pedido[e.target.value], options).then(res => {
 						console.log(res.data)
 				  })

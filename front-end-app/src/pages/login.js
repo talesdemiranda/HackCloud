@@ -56,6 +56,9 @@ export default class Login extends Component {
 							 return nextState;
 						})
 				  }
+				  else {
+					alert("Senha inválida");
+				}
 
 				})
 

@@ -51,9 +51,12 @@ export default class User extends Component {
 	  }
 
         submitForm(e){
-                alert(JSON.stringify(this.state));
+                //alert(JSON.stringify(this.state));
                 e.preventDefault();
                 api.post('usuarios/', this.state, options).then(res => {
+						document.getElementById("formulario").reset();
+						alert("Usuário cadastrado com sucesso!");
+		
                     console.log(res.data)
                 })
         }
@@ -65,7 +68,7 @@ export default class User extends Component {
         <Container>
             <Row>
                 <Col md={{ span: 6, offset: 3 }}>
-                    <Form onSubmit={this.submitForm.bind(this)}>
+                    <Form id="formulario" onSubmit={this.submitForm.bind(this)}>
                         <Form.Row>
                             <Form.Group as={Col} controlId="formGridEmail">
                             <Form.Label className="details-form">Email</Form.Label>
@@ -84,7 +87,7 @@ export default class User extends Component {
                         </Form.Group>
 
                         <Form.Group controlId="formGridendereco">
-                            <Form.Label className="details-form">Enreceço</Form.Label>
+                            <Form.Label className="details-form">Enrdereço</Form.Label>
                             <Form.Control  className="font-forms" placeholder="Informe o endereço" value={this.state.endereco} onChange={this.changeField.bind(this,'ENDERECO')} />
                         </Form.Group>
 
